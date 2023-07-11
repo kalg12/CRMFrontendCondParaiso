@@ -1,11 +1,20 @@
-import Hero from "@/components/Hero"
-import Navbar from "@/components/NavBar"
+"use client";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/NavBar";
+import dynamic from "next/dynamic";
+
+const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
     <>
-    <Navbar/>
-    <Hero/>
+      <AnimatedCursor />
+      <Navbar />
+      <Hero />
+      <Footer />
     </>
-  )
+  );
 }

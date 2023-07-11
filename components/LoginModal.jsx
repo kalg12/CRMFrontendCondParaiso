@@ -14,6 +14,13 @@ const LoginModal = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const credentials = {
+      email: email,
+      password: password,
+    };
+
+    console.log(credentials);
     // Lógica para iniciar sesión con el correo y la contraseña proporcionados
     // Aquí hacer la llamada a la API para autenticar al usuario
 

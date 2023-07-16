@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "tailwindcss/tailwind.css";
 
 const admin = () => {
   return (

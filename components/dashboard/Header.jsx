@@ -3,6 +3,7 @@ import SearchModal from "../dashboard/ModalSearch";
 import Notifications from "../dashboard/DropdownNotifications";
 import Help from "../dashboard/DropdownHelp";
 import ThemeToggle from "../dashboard/ThemeToggle";
+import UserMenu from "../dashboard/DropdownProfile";
 
 const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -75,6 +76,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
           <ThemeToggle />
           {/*  Divider */}
           <hr className="w-px h-6 bg-slate-200 dark:bg-slate-700 border-none" />
+          <UserMenu align="right" />
         </div>
       </div>
     </header>

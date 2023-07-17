@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useEffect, useRef } from "react";
+
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -95,7 +96,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </svg>
           </button>
           {/* Logo */}
-          <Link end href="/" className="block">
+          <Link href="/" className="block">
             <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
@@ -224,7 +225,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -313,7 +313,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/signin"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -324,7 +323,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/signup"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -335,7 +333,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/reset-password"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -354,7 +351,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </div>
         </div>
         {/* Expand / collapse button */}
-        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify-end mt-auto">
+        <div className="pt-3 hidden lg:inline-flex 2xl:hidden justify- mt-auto">
           <div className="px-3 py-2">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>

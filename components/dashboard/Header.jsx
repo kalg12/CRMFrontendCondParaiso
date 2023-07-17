@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import SearchModal from "../dashboard/ModalSearch";
+import Notifications from "../dashboard/DropdownNotifications";
+import Help from "../dashboard/DropdownHelp";
+import ThemeToggle from "../dashboard/ThemeToggle";
 
 const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -67,6 +70,11 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
               setModalOpen={setSearchModalOpen}
             />
           </div>
+          <Notifications align="right" />
+          <Help align="right" />
+          <ThemeToggle />
+          {/*  Divider */}
+          <hr className="w-px h-6 bg-slate-200 dark:bg-slate-700 border-none" />
         </div>
       </div>
     </header>

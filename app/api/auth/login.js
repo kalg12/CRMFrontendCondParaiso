@@ -8,7 +8,7 @@ const loginUser = async (email, password) => {
       email,
       password,
     });
-    /* Agregamos lógica para redireccionar si el status es 201 a http://localhost:3000/admin */
+    localStorage.setItem("token", response.data.token);
     if (response.status === 201) {
       window.location.href = "http://localhost:3000/admin";
     }

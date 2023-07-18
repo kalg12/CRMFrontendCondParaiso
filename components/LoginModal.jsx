@@ -1,4 +1,5 @@
 import { useState } from "react";
+import loginUser from "@/app/api/auth/login";
 
 const LoginModal = ({ onClose }) => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const LoginModal = ({ onClose }) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const credentials = {
@@ -20,11 +21,13 @@ const LoginModal = ({ onClose }) => {
       password: password,
     };
 
-    console.log(credentials);
-    // Lógica para iniciar sesión con el correo y la contraseña proporcionados
-    // Aquí hacer la llamada a la API para autenticar al usuario
+    try {
+      const response = await loginUser(credentials.email, credentials.password);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
 
-    // Cerrar el modal después de iniciar sesión
     onClose();
   };
 

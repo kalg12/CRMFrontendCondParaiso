@@ -72,7 +72,7 @@ function WelcomeBanner() {
           Buenas tardes, Condominios Paraíso 👋
         </h1>
         <p className="dark:text-indigo-200">
-          Here is what’s happening with your projects today:
+          Aquí encontrarás un resumen de la información más relevante:
         </p>
       </div>
     </div>

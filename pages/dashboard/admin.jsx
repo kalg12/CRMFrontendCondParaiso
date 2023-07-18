@@ -3,8 +3,6 @@ import Header from "@/components/dashboard/Header";
 import Sidebar from "@/components/dashboard/Sidebar";
 import WelcomeBanner from "@/components/dashboard/WelcomeBanner";
 import DashboardAvatars from "@/components/dashboard/DashboardAvatars";
-import FilterButton from "@/components/dashboard/DropdownFilter";
-import Datepicker from "@/components/dashboard/Datepicker";
 import DashboardCard01 from "@/components/dashboard/DashboardCard01";
 import DashboardCard02 from "@/components/dashboard/DashboardCard02";
 import DashboardCard03 from "@/components/dashboard/DashboardCard03";
@@ -45,20 +43,16 @@ const Admin = () => {
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                {/* Filter button */}
-                <FilterButton />
-                {/* Datepicker built with flatpickr */}
-                <Datepicker />
-                {/* Add view button */}
-                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                  <svg
-                    className="w-4 h-4 fill-current opacity-50 shrink-0"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                  </svg>
-                  <span className="hidden xs:block ml-2">Add view</span>
-                </button>
+                {/* Date */}
+                <span className="hidden sm:block text-gray-400 text-sm">
+                  Hoy es{" "}
+                  {new Date().toLocaleDateString("es-ES", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
               </div>
             </div>
 

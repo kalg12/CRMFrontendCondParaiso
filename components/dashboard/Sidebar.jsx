@@ -98,7 +98,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </svg>
           </button>
           {/* Logo */}
-          <Link end href="/" className="block">
+          <Link href="/" className="block">
             <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
@@ -233,7 +233,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -249,7 +248,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/dashboard/analytics"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -265,7 +263,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/dashboard/fintech"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -358,7 +355,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/customers"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -374,7 +370,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/orders"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -390,7 +385,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/invoices"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -406,7 +400,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/shop"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -422,7 +415,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/shop-2"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -438,7 +430,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/product"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -454,7 +445,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/cart"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -470,7 +460,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/cart-2"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -486,7 +475,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/cart-3"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -502,7 +490,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/ecommerce/pay"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -587,7 +574,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/users-tabs"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -603,7 +589,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/users-tiles"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -619,7 +604,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/profile"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -635,7 +619,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/feed"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -651,7 +634,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/forum"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -667,7 +649,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/forum-post"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -683,7 +664,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/meetups"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -699,7 +679,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/community/meetups-post"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -790,7 +769,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/finance/cards"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -806,7 +784,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/finance/transactions"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -822,7 +799,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/finance/transaction-details"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -913,7 +889,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/job/job-listing"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -929,7 +904,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/job/job-post"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -945,7 +919,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/job/company-profile"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1036,7 +1009,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/tasks/kanban"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1052,7 +1024,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/tasks/list"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1079,7 +1050,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }`}
               >
                 <Link
-                  end
                   href="/messages"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("messages")
@@ -1127,7 +1097,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }`}
               >
                 <Link
-                  end
                   href="/inbox"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("inbox")
@@ -1167,7 +1136,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }`}
               >
                 <Link
-                  end
                   href="/calendar"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("calendar")
@@ -1207,7 +1175,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }`}
               >
                 <Link
-                  end
                   href="/campaigns"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("campaigns")
@@ -1319,7 +1286,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/settings/account"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1335,7 +1301,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/settings/notifications"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1351,7 +1316,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/settings/apps"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1367,7 +1331,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/settings/plans"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1383,7 +1346,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/settings/billing"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1399,7 +1361,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/settings/feedback"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1506,7 +1467,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/utility/changelog"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1522,7 +1482,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/utility/roadmap"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1538,7 +1497,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/utility/faqs"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1554,7 +1512,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/utility/empty-state"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1570,7 +1527,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/utility/404"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1586,7 +1542,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/utility/knowledge-base"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1675,7 +1630,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/signin"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1686,7 +1640,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/signup"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1697,7 +1650,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/reset-password"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1765,7 +1717,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/onboarding-01"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1776,7 +1727,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/onboarding-02"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1787,7 +1737,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/onboarding-03"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1798,7 +1747,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/onboarding-04"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
@@ -1882,7 +1830,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/button"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1898,7 +1845,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/form"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1914,7 +1860,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/dropdown"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1930,7 +1875,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/alert"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1946,7 +1890,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/modal"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1962,7 +1905,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/pagination"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1978,7 +1920,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/tabs"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -1994,7 +1935,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/breadcrumb"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -2010,7 +1950,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/badge"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -2026,7 +1965,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/avatar"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -2042,7 +1980,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/tooltip"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -2058,7 +1995,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/accordion"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
@@ -2074,7 +2010,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              end
                               href="/component/icons"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +

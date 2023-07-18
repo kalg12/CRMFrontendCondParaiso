@@ -16,6 +16,7 @@ import DashboardCard10 from "@/components/dashboard/DashboardCard10";
 import DashboardCard11 from "@/components/dashboard/DashboardCard11";
 import DashboardCard12 from "@/components/dashboard/DashboardCard12";
 import DashboardCard13 from "@/components/dashboard/DashboardCard13";
+import { Helmet } from "react-helmet";
 import "tailwindcss/tailwind.css";
 
 const Admin = () => {
@@ -23,6 +24,11 @@ const Admin = () => {
 
   return (
     <div className="flex h-screen overflow-hidden">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>CRM - Condominios Paraíso Acapulco</title>
+        <link rel="canonical" href="https://condominiosparaiso.com/" />
+      </Helmet>
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 

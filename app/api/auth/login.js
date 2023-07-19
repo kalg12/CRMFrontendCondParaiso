@@ -1,6 +1,5 @@
 import axios from "axios";
 const endPoint = process.env.NEXT_PUBLIC_API_URL + "/api/auth/login";
-console.log(endPoint);
 
 const loginUser = async (email, password) => {
   try {

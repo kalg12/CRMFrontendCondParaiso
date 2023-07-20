@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import Transition from "../../app/utils/Transition";
 import UserAvatar from "../../app/images/user-avatar-32.png";
 import Link from "next/link";
 import Image from "next/image";
+import logoutUser from "@/app/api/auth/logout";
+import { UserContext } from "@/app/context/UserContext";
 
 function DropdownProfile({ align }) {
+  const user = useContext(UserContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -53,8 +56,8 @@ function DropdownProfile({ align }) {
           alt="User"
         />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-slate-200">
-            Acme Inc.
+          <span className="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:text-slate-300 dark:group-hover:text-slate-200">
+            {user.name} {user.lastName}
           </span>
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
@@ -84,7 +87,7 @@ function DropdownProfile({ align }) {
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200 dark:border-slate-700">
             <div className="font-medium text-slate-800 dark:text-slate-100">
-              Acme Inc.
+              {user.name} {user.lastName}
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 italic">
               Administrator
@@ -97,16 +100,19 @@ function DropdownProfile({ align }) {
                 href="/settings"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                Settings
+                Configuración
               </Link>
             </li>
             <li>
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
-                href="/signin"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                href="./"
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen);
+                  logoutUser();
+                }}
               >
-                Sign Out
+                Cerrar sesión
               </Link>
             </li>
           </ul>

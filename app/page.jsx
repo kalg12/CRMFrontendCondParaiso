@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/NavBar";
 import dynamic from "next/dynamic";
+import { UserProvider } from "./context/UserContext";
 
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
@@ -11,10 +12,12 @@ const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
 export default function Home() {
   return (
     <>
-      <AnimatedCursor />
-      <Navbar />
-      <Hero />
-      <Footer />
+      <UserProvider>
+        <AnimatedCursor />
+        <Navbar />
+        <Hero />
+        <Footer />
+      </UserProvider>
     </>
   );
 }

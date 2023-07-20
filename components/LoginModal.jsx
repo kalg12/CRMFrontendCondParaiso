@@ -1,5 +1,5 @@
 import { useState } from "react";
-import loginUser from "@/app/api/auth/login";
+import { loginUser } from "@/app/api/auth/login";
 import { Orbit } from "@uiball/loaders";
 
 const LoginModal = ({ onClose }) => {

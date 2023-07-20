@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getToken } from "@/app/api/auth/login";
+import getSaludo from "@/app/api/saludo";
 
 function WelcomeBanner() {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    // Función para obtener el nombre de usuario del token
+    const obtenerNombreUsuario = () => {
+      try {
+        const token = getToken(); // Llama a la función para obtener el token desde api/auth/login.js
+        if (token) {
+          const decodedToken = JSON.parse(atob(token.split(".")[1]));
+          const nombre = decodedToken.user.name;
+          setUserName(nombre); // Actualiza el estado con el nombre del usuario
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    obtenerNombreUsuario();
+  }, []);
+
   return (
     <div className="relative bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
       {/* Background illustration */}
@@ -69,7 +91,7 @@ function WelcomeBanner() {
       {/* Content */}
       <div className="relative">
         <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">
-          Buenas tardes, Condominios Paraíso 👋
+          {getSaludo()}, {userName ? userName : "Condominios Paraíso"} 👋
         </h1>
         <p className="dark:text-indigo-200">
           Aquí encontrarás un resumen de la información más relevante:

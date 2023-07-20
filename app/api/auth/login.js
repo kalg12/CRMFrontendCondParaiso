@@ -17,4 +17,8 @@ const loginUser = async (email, password) => {
   }
 };
 
-export default loginUser;
+const getToken = () => {
+  return localStorage.getItem("token");
+};
+
+export { loginUser, getToken };

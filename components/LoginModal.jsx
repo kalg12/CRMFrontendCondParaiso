@@ -1,9 +1,11 @@
 import { useState } from "react";
 import loginUser from "@/app/api/auth/login";
+import { Orbit } from "@uiball/loaders";
 
 const LoginModal = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -21,12 +23,16 @@ const LoginModal = ({ onClose }) => {
       password: password,
     };
 
+    setIsLoading(true); // Muestra el loader
+
     try {
       const response = await loginUser(credentials.email, credentials.password);
       console.log(response);
     } catch (error) {
       console.log(error);
     }
+
+    setIsLoading(false); // Oculta el loader después de obtener la respuesta
 
     onClose();
   };
@@ -42,9 +48,6 @@ const LoginModal = ({ onClose }) => {
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="sm:items-start">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  Iniciar Sesión
-                </h3>
                 <div className="mt-2">
                   <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
@@ -84,7 +87,7 @@ const LoginModal = ({ onClose }) => {
                         type="submit"
                         className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       >
-                        Iniciar sesión
+                        {isLoading ? <Orbit color="white" /> : "Iniciar sesión"}
                       </button>
                     </div>
                   </form>

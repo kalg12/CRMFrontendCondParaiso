@@ -56,7 +56,7 @@ function DropdownProfile({ align }) {
           alt="User"
         />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:text-slate-300 dark:group-hover:text-slate-200">
+          <span className="truncate ml-2 text-sm font-medium text-slate-100 dark:text-slate-300 group-hover:text-slate-400 dark:group-hover:text-slate-200">
             {user.name} {user.lastName}
           </span>
           <svg

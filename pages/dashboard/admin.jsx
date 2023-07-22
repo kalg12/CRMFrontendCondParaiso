@@ -55,7 +55,7 @@ const Admin = () => {
         setIsLoading(false);
       }
     }
-  }, []);
+  }, [router]);
 
   return (
     <>

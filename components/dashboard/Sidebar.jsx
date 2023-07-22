@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useEffect, useRef } from "react";
+import logoutUser from "@/app/api/auth/logout";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
@@ -590,6 +591,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <Link
                               href="./"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
+                              onClick={logoutUser}
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Cerrar Sesión

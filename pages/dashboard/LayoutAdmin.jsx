@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "@/components/dashboard/Header";
 import Sidebar from "@/components/dashboard/Sidebar";
 import WelcomeBanner from "@/components/dashboard/WelcomeBanner";
@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Helmet } from "react-helmet";
 import "tailwindcss/tailwind.css";
 
-const Admin = ({children}) => {
+const LayoutAdmin = ({ children }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -86,7 +86,7 @@ const Admin = ({children}) => {
                   </div>
                 </div>
                 {/* Children */}
-                { children }
+                {children}
               </div>
             </main>
           </div>
@@ -96,4 +96,4 @@ const Admin = ({children}) => {
   );
 };
 
-export default Admin;
+export default LayoutAdmin;

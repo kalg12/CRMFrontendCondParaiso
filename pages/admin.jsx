@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "./dashboard/Admin";
+import LayoutAdmin from "./dashboard/LayoutAdmin";
 import ThemeProvider from "@/app/utils/ThemeContext";
 import { UserProvider } from "@/app/context/UserContext";
 
@@ -7,7 +7,7 @@ const admin = () => {
   return (
     <ThemeProvider>
       <UserProvider>
-        <Admin />
+        <LayoutAdmin />
       </UserProvider>
     </ThemeProvider>
   );

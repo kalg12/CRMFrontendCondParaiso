@@ -1,12 +1,11 @@
-import Add from "@/components/prospects/Add";
+import Admin from "@/pages/dashboard/LayoutAdmin";
 import "tailwindcss/tailwind.css";
 
 const add = () => {
   return (
-    <>
-      <h1 className="text-emerald-400">Hola</h1>
-      <Add />
-    </>
+    <Admin>
+      <h1 className="text-emerald-400">Formulario aquí</h1>
+    </Admin>
   );
 };
 

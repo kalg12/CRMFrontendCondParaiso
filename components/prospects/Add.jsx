@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API = "localhost:4000";
+const API = process.env.NEXT_PUBLIC_API_URL;
 const endpoint = "/api/prospects";
 
 const Add = () => {
@@ -13,21 +13,27 @@ const Add = () => {
     source: "Facebook",
     status: "Contactado",
     assignedTo: "",
-    age: "",
-    gender: "Otro",
-    location: "",
-    history: [
-      {
-        date: "",
-        status: "Contactado",
-        comments: "",
-      },
-    ],
+    demographics: {
+      age: "",
+      gender: "Otro",
+      location: "",
+    },
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleDemographicsChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      demographics: {
+        ...formData.demographics,
+        [name]: value,
+      },
+    });
   };
 
   const handleSubmit = (e) => {
@@ -42,7 +48,8 @@ const Add = () => {
 
       const config = {
         headers: {
-          token: token,
+          "Content-Type": "application/json",
+          token: `${token}`,
         },
       };
 
@@ -160,8 +167,8 @@ const Add = () => {
               type="number"
               id="age"
               name="age"
-              value={formData.age}
-              onChange={handleChange}
+              value={formData.demographics.age}
+              onChange={handleDemographicsChange}
               className="border border-gray-300 px-3 py-2 w-full"
               required
             />
@@ -171,8 +178,8 @@ const Add = () => {
             <select
               id="gender"
               name="gender"
-              value={formData.gender}
-              onChange={handleChange}
+              value={formData.demographics.location}
+              onChange={handleDemographicsChange}
               className="border border-gray-300 px-3 py-2 w-full"
               required
             >
@@ -187,15 +194,11 @@ const Add = () => {
               type="text"
               id="location"
               name="location"
-              value={formData.location}
-              onChange={handleChange}
+              value={formData.demographics.location}
+              onChange={handleDemographicsChange}
               className="border border-gray-300 px-3 py-2 w-full"
               required
             />
-          </div>
-          <div className="mb-4">
-            <label>Historial:</label>
-            {/* Puedes agregar aquí la lógica para mostrar y agregar elementos al historial */}
           </div>
           <div className="mb-4">
             <button

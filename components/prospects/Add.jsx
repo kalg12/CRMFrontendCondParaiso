@@ -350,7 +350,7 @@ const Add = () => {
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               disabled={isLoadingEmployees || sendingForm} // Deshabilitar el botón mientras se cargan los empleados o se envía el formulario
             >
-              {sendingForm ? "Cargando..." : "Guardar"}
+              {sendingForm ? "Enviando..." : "Guardar"}
             </button>
           </div>
         </form>

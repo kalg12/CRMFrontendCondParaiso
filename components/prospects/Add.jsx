@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from "sweetalert";
+import Autosuggest from "react-autosuggest"; // Importa la librería
+import { City } from "country-state-city";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 const endpoint = "/api/prospects";
@@ -10,15 +13,20 @@ const Add = () => {
     lastName: "",
     email: "",
     phoneNumber: "",
-    source: "Facebook",
-    status: "Contactado",
+    source: "",
+    status: "",
     assignedTo: "",
+    notes: "",
     demographics: {
       age: "",
-      gender: "Otro",
+      gender: "",
       location: "",
     },
   });
+  const [employees, setEmployees] = useState([]);
+  const [isLoadingEmployees, setIsLoadingEmployees] = useState(true);
+  const [locationSuggestions, setLocationSuggestions] = useState([]);
+  const [sendingForm, setSendingForm] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,14 +46,20 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddProspect();
+    if (isValidPhoneNumber(formData.phoneNumber)) {
+      handleAddProspect();
+    } else {
+      swal({
+        icon: "error",
+        title: "Error",
+        text: "El número telefónico debe tener 10 dígitos",
+      });
+    }
   };
 
   const handleAddProspect = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log(token);
-
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -53,14 +67,98 @@ const Add = () => {
         },
       };
 
-      const response = await axios.post(`${API}${endpoint}`, formData, config);
-      // Manejar la respuesta si es necesario
-      console.log(response.data);
+      await axios.post(`${API}${endpoint}`, formData, config);
+
+      // Mostrar SweetAlert de éxito y limpiar el formulario
+      swal({
+        icon: "success",
+        title: "Éxito",
+        text: "Prospecto agregado exitosamente",
+      }).then(() => {
+        setFormData({
+          name: "",
+          lastName: "",
+          email: "",
+          phoneNumber: "",
+          source: "Facebook",
+          status: "Contactado",
+          assignedTo: "",
+          notes: "",
+          demographics: {
+            age: "",
+            gender: "Otro",
+            location: "",
+          },
+        });
+      });
     } catch (error) {
-      // Manejar el error si ocurre
-      console.error(error);
+      // Verificar si el error se debe a un correo electrónico duplicado
+      if (error.response.data.error.includes("duplicate key error")) {
+        const duplicateEmail = error.response.data.error.match(/\"(.+?)\"/)[1];
+        swal({
+          icon: "error",
+          title: "Error",
+          text: `El correo electrónico ${duplicateEmail} ya está registrado`,
+        });
+      } else {
+        swal({
+          icon: "error",
+          title: "Error",
+          text: "Ocurrió un error al agregar el prospecto",
+        });
+      }
     }
   };
+
+  /* Cities Handles */
+
+  const handleLocationChange = (e) => {
+    const { value } = e.target;
+    const suggestions = City.getCitiesOfCountry("MX").filter((city) =>
+      city.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setLocationSuggestions(suggestions);
+    handleDemographicsChange(e); // Actualizar el estado demographics
+  };
+
+  const handleLocationSelect = (value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      demographics: {
+        ...prevData.demographics,
+        location: value,
+      },
+    }));
+    setLocationSuggestions([]); // Limpiar sugerencias
+  };
+
+  const isValidPhoneNumber = (phoneNumber) => {
+    // Validar que el número tenga 10 dígitos
+    return /^\d{10}$/.test(phoneNumber);
+  };
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            token: `${token}`,
+          },
+        };
+
+        const response = await axios.get(`${API}/api/employeds`, config);
+        setEmployees(response.data);
+        setIsLoadingEmployees(false); // Marcar que los empleados han terminado de cargar
+      } catch (error) {
+        setIsLoadingEmployees(false); // Manejar el error y marcar que los empleados han terminado de cargar
+      }
+    };
+
+    fetchEmployees();
+  }, []);
 
   return (
     <>
@@ -124,6 +222,9 @@ const Add = () => {
               className="border border-gray-300 px-3 py-2 w-full"
               required
             >
+              <option value="" disabled>
+                Elegir opción...
+              </option>
               <option value="Facebook">Facebook</option>
               <option value="Instagram">Instagram</option>
               <option value="Twitter">Twitter</option>
@@ -142,6 +243,9 @@ const Add = () => {
               className="border border-gray-300 px-3 py-2 w-full"
               required
             >
+              <option value="" disabled>
+                Elegir opción...
+              </option>
               <option value="Contactado">Contactado</option>
               <option value="Interesado">Interesado</option>
               <option value="En proceso">En proceso</option>
@@ -151,14 +255,37 @@ const Add = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="assignedTo">Asignado a:</label>
-            <input
-              type="text"
+            <select
               id="assignedTo"
               name="assignedTo"
               value={formData.assignedTo}
               onChange={handleChange}
               className="border border-gray-300 px-3 py-2 w-full"
               required
+              disabled={isLoadingEmployees} // Deshabilitar el menú mientras se cargan los empleados
+            >
+              <option value="">Seleccionar empleado...</option>
+              {isLoadingEmployees ? (
+                <option value="" disabled>
+                  Loading...
+                </option> // Mostrar mensaje de carga mientras se cargan los empleados
+              ) : (
+                employees.map((employee) => (
+                  <option key={employee._id} value={employee._id}>
+                    {employee.name} {employee.lastName}
+                  </option>
+                ))
+              )}
+            </select>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="notes">Notas:</label>
+            <textarea
+              id="notes"
+              name="notes"
+              value={formData.notes}
+              onChange={handleChange}
+              className="border border-gray-300 px-3 py-2 w-full"
             />
           </div>
           <div className="mb-4">
@@ -178,14 +305,16 @@ const Add = () => {
             <select
               id="gender"
               name="gender"
-              value={formData.demographics.location}
+              value={formData.demographics.gender}
               onChange={handleDemographicsChange}
               className="border border-gray-300 px-3 py-2 w-full"
               required
             >
+              <option value="" disabled>
+                Elegir opción...
+              </option>
               <option value="Masculino">Masculino</option>
               <option value="Femenino">Femenino</option>
-              <option value="Otro">Otro</option>
             </select>
           </div>
           <div className="mb-4">
@@ -195,15 +324,30 @@ const Add = () => {
               id="location"
               name="location"
               value={formData.demographics.location}
-              onChange={handleDemographicsChange}
+              onChange={handleLocationChange}
               className="border border-gray-300 px-3 py-2 w-full"
               required
             />
+            {locationSuggestions.length > 0 && (
+              <ul className="bg-white border border-gray-300 mt-2">
+                {locationSuggestions.map((city) => (
+                  <li
+                    key={city.id}
+                    className="cursor-pointer px-3 py-1 hover:bg-gray-100"
+                    onClick={() => handleLocationSelect(city.name)}
+                  >
+                    {city.name}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
+
           <div className="mb-4">
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              disabled={isLoadingEmployees} // Deshabilitar el botón mientras se cargan los empleados
             >
               Agregar Prospecto
             </button>

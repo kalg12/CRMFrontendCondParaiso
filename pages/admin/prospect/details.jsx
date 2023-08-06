@@ -1,7 +1,11 @@
-import React from "react";
+import List from "@/components/prospects/List";
+import Admin from "@/pages/dashboard/LayoutAdmin";
+import "tailwindcss/tailwind.css";
 
 const details = () => {
-  return <div>details</div>;
+  <Admin>
+    <List />
+  </Admin>;
 };
 
 export default details;

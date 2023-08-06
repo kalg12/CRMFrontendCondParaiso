@@ -158,7 +158,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             <ul className="mt-3">
               {/* Dashboard */}
               <li className="ml-3 mb-2">
-                <Link href="./admin">
+                <Link href="/admin">
                   <div
                     className={`block text-slate-200 truncate transition duration-150 ${
                       pathname === "/" || pathname.includes("dashboard")
@@ -265,7 +265,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              href="./admin/prospect/add"
+                              href="/admin/prospect/add"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
                                 (isActive
@@ -280,7 +280,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              href="./admin/prospect/list"
+                              href="/admin/prospect/list"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
                                 (isActive
@@ -400,7 +400,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              href="./admin/tasks/add"
+                              href="/admin/tasks/add"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
                                 (isActive
@@ -415,7 +415,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           </li>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              href="./admin/tasks/list"
+                              href="/admin/tasks/list"
                               className={({ isActive }) =>
                                 "block transition duration-150 truncate " +
                                 (isActive
@@ -441,7 +441,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }`}
               >
                 <Link
-                  href="./admin/messages"
+                  href="/admin/messages"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("messages")
                       ? "hover:text-slate-200"
@@ -488,7 +488,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }`}
               >
                 <Link
-                  href="./admin/calendar"
+                  href="/admin/calendar"
                   className={`block text-slate-200 truncate transition duration-150 ${
                     pathname.includes("calendar")
                       ? "hover:text-slate-200"
@@ -589,7 +589,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
                           <li className="mb-1 last:mb-0">
                             <Link
-                              href="./"
+                              href="/"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                               onClick={logoutUser}
                             >

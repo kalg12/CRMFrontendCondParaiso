@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-import Autosuggest from "react-autosuggest"; // Importa la librería
 import { City } from "country-state-city";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -67,6 +66,8 @@ const Add = () => {
         },
       };
 
+      setSendingForm(true);
+
       await axios.post(`${API}${endpoint}`, formData, config);
 
       // Mostrar SweetAlert de éxito y limpiar el formulario
@@ -75,6 +76,7 @@ const Add = () => {
         title: "Éxito",
         text: "Prospecto agregado exitosamente",
       }).then(() => {
+        setSendingForm(false); // Restablecer el estado de sendingForm a false
         setFormData({
           name: "",
           lastName: "",
@@ -342,14 +344,13 @@ const Add = () => {
               </ul>
             )}
           </div>
-
           <div className="mb-4">
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              disabled={isLoadingEmployees} // Deshabilitar el botón mientras se cargan los empleados
+              disabled={isLoadingEmployees || sendingForm} // Deshabilitar el botón mientras se cargan los empleados o se envía el formulario
             >
-              Agregar Prospecto
+              {sendingForm ? "Cargando..." : "Guardar"}
             </button>
           </div>
         </form>

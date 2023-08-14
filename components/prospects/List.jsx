@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { format } from "date-fns";
+import ExcelJS from "exceljs";
+import { saveAs } from "file-saver"; // Para descargar el archivo
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 const endpoint = "/api/prospects";
@@ -9,10 +11,46 @@ const endpoint = "/api/prospects";
 const List = () => {
   const [prospects, setProspects] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [prospectsPerPage] = useState(5);
+  const [prospectsPerPage, setProspectsPerPage] = useState(5); // Estado para la cantidad de usuarios por página
   const [sortKey, setSortKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const generateExcelFile = async (prospects) => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Prospects");
+
+    // Agregar encabezados
+    worksheet.addRow([
+      "Nombre",
+      "Apellido",
+      "Correo",
+      "Teléfono",
+      "Origen",
+      "Fecha de Creación",
+    ]);
+
+    // Agregar datos de los prospectos
+    prospects.forEach((prospect) => {
+      worksheet.addRow([
+        prospect.name,
+        prospect.lastName,
+        prospect.email,
+        prospect.phoneNumber,
+        prospect.source,
+        prospect.createdAt instanceof Date
+          ? prospect.createdAt.toLocaleDateString("es-ES")
+          : "", // Formatear la fecha si es un objeto Date
+      ]);
+    });
+
+    // Guardar el archivo y descargarlo
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    saveAs(blob, "prospects.xlsx");
+  };
 
   useEffect(() => {
     const getProspects = async () => {
@@ -45,6 +83,11 @@ const List = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleProspectsPerPageChange = (event) => {
+    setProspectsPerPage(parseInt(event.target.value));
+    setCurrentPage(1); // Reiniciar la página al cambiar la cantidad de usuarios por página
   };
 
   const searchTermLowerCase = searchTerm.toLowerCase();
@@ -81,6 +124,36 @@ const List = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
+      <div className="flex justify-between items-center mb-4">
+        {" "}
+        {/* Añadir items-center para centrar verticalmente */}
+        <h2 className="text-2xl font-semibold">Listado de Prospectos</h2>
+        <div className="flex items-center space-x-2">
+          {" "}
+          {/* Agregar contenedor para el combo list */}
+          <label htmlFor="perPage">Usuarios por página:</label>
+          <select
+            id="perPage"
+            name="perPage"
+            className="px-2 py-1 border rounded"
+            onChange={handleProspectsPerPageChange}
+            value={prospectsPerPage}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <button
+          onClick={() => generateExcelFile(prospectsToShow)}
+          className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200"
+        >
+          Descargar Excel
+        </button>
+      </div>
+
       <div className="max-w-3xl mx-auto">
         <table className="w-full border-collapse">
           <thead>

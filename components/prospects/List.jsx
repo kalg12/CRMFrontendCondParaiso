@@ -124,14 +124,13 @@ const List = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
-      <div className="flex justify-between items-center mb-4">
-        {" "}
-        {/* Añadir items-center para centrar verticalmente */}
-        <h2 className="text-2xl font-semibold">Listado de Prospectos</h2>
-        <div className="flex items-center space-x-2">
+      <div className="flex justify-between items-center mb-4 p-2">
+        <h2 className="text-3xl font-semibold">Lista de Prospectos</h2>{" "}
+        {/* Aumentar el tamaño del texto */}
+        <div className="flex items-center space-x-4">
           {" "}
-          {/* Agregar contenedor para el combo list */}
-          <label htmlFor="perPage">Usuarios por página:</label>
+          {/* Aumentar el espacio horizontal entre elementos */}
+          <label htmlFor="perPage">Mostrar por página:</label>
           <select
             id="perPage"
             name="perPage"
@@ -148,12 +147,11 @@ const List = () => {
         </div>
         <button
           onClick={() => generateExcelFile(prospectsToShow)}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded shadow-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200"
+          className="px-4 py-2 text-sm font-medium text-white bg-green-500 rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200" // Cambiar el color del botón a verde
         >
           Descargar Excel
         </button>
       </div>
-
       <div className="max-w-3xl mx-auto">
         <table className="w-full border-collapse">
           <thead>
